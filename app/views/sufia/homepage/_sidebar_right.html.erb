@@ -1,14 +1,48 @@
 <!-- BEGIN Rigth Side Content Window -->
 <div class="panel-panel right col-xs-12 col-sm-12 col-md-3 col-lg-3" id="front-dash-right">
-  
+
 <div class="panel-pane pane-fieldable-panels-pane pane-uuid-cb9d6b0b-fa66-4fc0-9de3-64b190bf3468 front-panel pane-bundle-text"  id="top-links" >
 
 
 
   <div class="pane-content">
     <div class="fieldable-panels-pane">
-    <div class="field field-name-field-basic-text-text field-type-text-long field-label-hidden"><div class="field-items"><div class="field-item even"><ul class="nav nav-list"><li><a href="https://biblio.csusm.edu/reserves" class="ext" target="_blank"><span class="icon-wrapper"><i class="fa fa-folder"></i></span> Course reserves</a></li>
-<li><a href="https://primo-pmtna01.hosted.exlibrisgroup.com/primo-explore/account?vid=CALS_USM&lang=en_US&section=overview" class="ext" target="_blank"><span class="icon-wrapper"><i class="fa fa-repeat"></i></span> Renew materials/Your Account</a></li>
+    <div class="field field-name-field-basic-text-text field-type-text-long field-label-hidden">
+      <div class="field-items">
+        <div class="field-item even">
+          <ul class="nav nav-list">
+              <% if user_signed_in? %>
+                <li>
+                  <%= link_to sufia.notifications_path do %>
+                    <%= t("sufia.toolbar.notifications") %>
+                    <%= render partial: 'users/notify_number' %>
+                  <% end %>
+                </li>
+                <li class="dropdown">
+                  <%= link_to sufia.profile_path(current_user), role: 'button', data: { toggle: 'dropdown' }, aria: { haspopup: true, expanded: false} do %>
+                    <span class="sr-only"><%= t("sufia.toolbar.profile.sr_action") %></span>
+                    <span class="hidden-xs">&nbsp;<%= current_user.name %></span>
+                    <span class="sr-only"> <%= t("sufia.toolbar.profile.sr_target") %></span>
+                    <span class="fa fa-user"></span>
+                    <span class="caret" ></span>
+                  <% end %>
+                  <ul class="dropdown-menu dropdown-menu-right" role="menu">
+                    <li><%= link_to t("sufia.toolbar.profile.view"), sufia.profile_path(current_user) %></li>
+                    <li><%= link_to t("sufia.toolbar.profile.edit"), sufia.edit_profile_path(current_user) %></li>
+                    <li class="divider"></li>
+                    <li><%= link_to t("sufia.toolbar.profile.logout"), main_app.destroy_user_session_path %></li>
+                  </ul>
+                </li><!-- /.btn-group -->
+              <% else %>
+                <li>
+                  <%= link_to main_app.new_user_session_path do %>
+                    <span class="icon-wrapper"><i class="glyphicon glyphicon-log-in" aria-hidden="true"></i></span> <%= t("sufia.toolbar.profile.login") %>
+                  <% end %>
+                </li>
+              <% end %>
+            </ul>
+            <li><a href="https://biblio.csusm.edu/reserves" class="ext" target="_blank"><span class="icon-wrapper"><i class="fa fa-folder"></i></span> Course reserves</a></li>
+            <li><a href="https://primo-pmtna01.hosted.exlibrisgroup.com/primo-explore/account?vid=CALS_USM&lang=en_US&section=overview" class="ext" target="_blank"><span class="icon-wrapper"><i class="fa fa-repeat"></i></span> Renew materials/Your Account</a></li>
 <li><a href="https://biblio.csusm.edu/groupstudy"><span class="icon-wrapper"><i class="fa fa-group"></i></span> Reserve a Group Study Room</a></li>
 <li><a href="https://biblio.csusm.edu/needacomputer/" target="_blank"><span class="icon-wrapper"><i class="fa fa-desktop" aria-hidden="true"></i></span> Need a computer?</a></li>
 <li><a href="https://illiad.csusm.edu/"><span class="icon-wrapper"><i class="fa fa-exchange"></i></span> Interlibrary Loan [ILL]</a></li>
