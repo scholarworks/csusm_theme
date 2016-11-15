@@ -4,7 +4,17 @@
     <div class="bootstrap-threecol-stacked" id="mini-panel-dashboard_lower_left">
       <div class="row">
         <!-- Begin Left Pane Card Holder -->
-        <div class="panel-panel left .panel-dash-central-middle col-xs-12 col-sm-12 col-md-5 col-lg-5">
+        <div class="panel-panel left .panel-dash-central-middle col-xs-12 col-sm-12 col-md-12 col-lg-12">
+
+          <!-- BEGIN Recent Uploads -->
+          <div class="panel-pane pane-custom pane-1 front-panel"  id="initiatives" >
+            <h2 class="pane-title">Recently Uploaded</h2>
+            <div class="pane-content">
+              <%= render 'recently_uploaded', recent_documents: @recent_documents %>
+            </div>
+          </div>
+          <!-- END Recent Uploads -->
+
           <!-- Begin Featured Works Card -->
           <div class="panel-pane pane-views pane-lac2 pane-lac2 front-panel"  id="guides-panel" >
             <h2 class="pane-title">Featured Works</h2>
@@ -18,18 +28,11 @@
           </div>
           <!-- END Featured Works Card -->
 
-          <!-- BEGIN Recent Uploads -->
-          <div class="panel-pane pane-custom pane-1 front-panel"  id="initiatives" >
-            <h2 class="pane-title">Recently Uploaded</h2>
-            <div class="pane-content">
-              <%= render 'recently_uploaded', recent_documents: @recent_documents %>
-            </div>
-          </div>
-          <!-- END Recent Uploads -->
         </div>
         <!-- End Left Pane Card Holder -->
 
         <!-- Begin Center Card -->
+        <% if false %>
         <div class="panel-panel middle dash-cmid-right col-xs-12 col-sm-12 col-md-7 col-lg-7">
           <div class="panel-pane pane-views-panes pane-library-spotlight-panel-pane-3 front-panel"  id="dynamic-spotlights" >
             <h2 class="pane-title">Featured Researcher</h2>
@@ -38,6 +41,7 @@
             </div>
           </div>
         </div>
+        <% end %>
         <!-- END Center Card -->
       </div>
     </div>
