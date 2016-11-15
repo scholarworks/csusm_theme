@@ -1,0 +1,92 @@
+<% provide :page_title, application_name %>
+
+<div class="title-panel-wrapper">
+</div>
+
+<div id="main-container" class="container-fluid">
+  <div class="row">
+    <div class="row">
+      <div class="collapse navbar-collapse pull-right" id="navigation-2">
+      </div>
+    </div>
+    <a id="main-content"></a>
+  </div>
+  <div class="row">
+    <section class="col-sm-12">
+      <div class="row">
+      </div>
+      <div class="region region-content">
+        <section id="block-system-main" class="block block-system clearfix">
+
+          <div class="bootstrap-threecol-stacked">
+            <div class="row">
+              <!-- BEGIN LEFT Side of Content Window -->
+              <div class="panel-panel middle col-xs-12 col-sm-12 col-md-8 col-lg-8">
+                <!-- BEGIN Search Box -->
+                <div class="panel-pane pane-panels-mini pane-database-lookup pane-database-lookup front-panel"  id="find-panel" >
+                  <h2 class="pane-title">Browse ScholarWorks</h2>
+                  <div class="pane-content">
+                    <div class="panel-display panel-1col clearfix" id="mini-panel-database_lookup">
+                      <div class="panel-panel panel-col">
+                        <div>
+                          <div class="panel-panel middle">
+                            <section id="block-views-database-guides-lists-block-3" class="block block-views pane-database-guides-lists clearfix">
+                              <div class="view view-Database-Guides-Lists view-id-Database_Guides_Lists view-display-id-block_3 view-dom-id-69ee754f19a439bd7cb17975decedadc">
+                                <div class="view-content">
+                                  <div class="yamm">
+                                    <ul class="nav nav-pills">
+                                      <li class="nav-header">Browse by: </li>
+                                        <li><a href="/ir/catalog/facet/contributor_sim">Contributor</a></li>
+                                        <li><a href="/ir/catalog/facet/resource_type_sim">Type</a></li>
+                                        <li><a href="/ir/catalog/facet/subject_sim">Subject</a></li>
+                                        <li><a href="/ir/catalog/facet/sponsorship_sim">Department</a></li>
+                                    </ul>
+                                  </div>
+                                </div>
+                              </div>
+                            </section>
+                            <div id="block-block-1" class="block block-block">
+                              <%= render partial: 'catalog/search_form' %>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!-- END Search Box -->
+
+                <!-- BEGIN Main Content Block -->
+                      <%= render 'home_content' %>
+                <!-- END Main Content Block -->
+              </div>
+              <!-- END LEFT Side of Contene Window -->
+              <%= render 'sidebar_right' %>
+            </div>
+          </div>
+        </section>
+      </div>
+      <br clear="all">
+    </section>
+  </div>
+</div>
+
+<% if false %>
+<% if @presenter.display_share_button? %>
+  <div class="home_share_work row">
+    <div class="col-sm-12 text-center">
+      <%= link_to [:new, Sufia.primary_work_type.model_name.singular_route_key],
+            class: "btn btn-primary btn-lg" do %>
+        <i class="glyphicon glyphicon-upload"></i> <%= t('sufia.share_button') %>
+      <% end %>
+      <p><a href="/terms/">Terms of Use</a></p>
+    </div>
+  </div>
+<% end %>
+<% end %>
+
+  </div>
+</div>
+
+
+<%= tiny_mce_stuff if can? :update, ContentBlock%>

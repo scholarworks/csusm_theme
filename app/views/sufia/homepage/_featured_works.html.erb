@@ -1,0 +1,25 @@
+<!-- BEGIN homepage/_featured_works -->
+<!-- Edited: 20161106 - Aaron Collier -->
+<div class="yamm">
+  <ul class="nav nav-stacked">
+<% if @featured_work_list.empty? %>
+  <li><%= t('sufia.homepage.featured_works.no_works') %></li>
+<% elsif can? :update, FeaturedWork %>
+  <%= form_for [sufia, @featured_work_list] do |f| %>
+    <div class="panel-group dd" id="dd">
+      <ol id="featured_works">
+        <%= f.fields_for :featured_works do |featured| %>
+          <%= render 'sortable_featured', f: featured %>
+        <% end %>
+      </ol>
+    </div>
+    <%= f.submit("Save order", class: 'btn btn-default') %>
+  <% end %>
+<% else %>
+  <ol id="featured_works">
+    <%= render partial: 'featured', collection: @featured_work_list.featured_works %>
+  </ol>
+<% end %>
+  </ul>
+</div>
+<!-- END homepage/_featured_works -->

@@ -1,0 +1,11 @@
+<!-- Begin homepage/_recently_uploaded -->
+<!-- Edited: 20161106 - Aaron Collier -->
+<% if recent_documents.blank? %>
+  <p><%= t('.no_public') %></p>
+<% else %>
+  <ul class="list-unstyled">
+        <%= render partial: "recent_document", collection: recent_documents %>
+  </ul>
+
+<% end %>
+<!-- End homepage/_recently_uploaded -->
