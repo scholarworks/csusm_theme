@@ -12,18 +12,25 @@
         <div class="field-item even">
           <ul class="nav nav-list">
               <% if user_signed_in? %>
-                <li><span class="icon-wrapper"><i class="fa fa-envelope"></i></span>
+                <li>
                   <%= link_to sufia.notifications_path do %>
+                    <span class="icon-wrapper"><i class="fa fa-envelope"></i></span>
                     <%= t("sufia.toolbar.notifications") %>
                     <%= render partial: 'users/notify_number' %>
                   <% end %>
                 </li>
-                <li><span class="icon-wrapper"><i class="fa fa-user"></i></span>
+                <li>
                   <%= link_to sufia.profile_path(current_user) do %>
+                    <span class="icon-wrapper"><i class="fa fa-user"></i></span>
                     <%= current_user.name %>
                   <% end %>
                 </li>
-                <li><span class="icon-wrapper"><i class="fa fa-sign-out"></i></span><%= link_to t("sufia.toolbar.profile.logout"), main_app.destroy_user_session_path %></li>
+                <li>
+                  <%= link_to main_app.destroy_user_session_path do %>
+                  <span class="icon-wrapper"><i class="fa fa-sign-out"></i></span>
+                  <% t("sufia.toolbar.profile.logout") %>
+                  <% end %>
+                </li>
               <% else %>
                 <li>
                   <%= link_to main_app.new_user_session_path do %>
